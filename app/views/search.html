@@ -1,5 +1,5 @@
 <div class="header">
-    <h3 class="text-muted">What did i post? [on Facebook] <span class="label label-success">logged in</span></h3>
+    <h3 class="text-muted">What did i post? [on Facebook] <!--<span class="label label-success">logged in</span>--></h3>
 </div>
 <div ng-show="user.name" class="row marketing">
     <h2 ng-show="user.first_name">Hi {{user.first_name}}</h2>
@@ -18,9 +18,24 @@
                     <label class="sr-only" for="searchword">Search your Post by a Keyword</label>
                     <input type="text" class="form-control" id="searchword" placeholder="type in your Keyword" >
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search!</button>
+        <button class="btn btn-default" type="button" ng-click="search()">Search!</button>
       </span>
                 </div>
+            <select class="form-control" id="content-type">
+                <option value="photo">in Photos</option>
+                <option value="posting">FB Status Posting</option>
+                <option value="stream">on my Stream</option>
+            </select>
+
+            <div class="row">
+                <ul class="example-animate-container">
+                    <li class="animate-repeat" ng-repeat="photo in photos">
+                       Title: {{photo.caption}}<br>
+                       Link: <a href="{{photo.link}}">{{photo.link}}</a><br>
+                       <img ng-src="{{photo.src_big}}" >
+                    </li>
+                </ul>
+            </div>
                 <!-- /input-group -->
             </div>
         <div class="tab-pane fade" id="likes">...</div>

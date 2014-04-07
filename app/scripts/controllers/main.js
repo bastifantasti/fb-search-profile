@@ -24,7 +24,7 @@ angular.module('fbsearchprofileApp')
                 Userdata.setUserToken(response.authResponse.accessToken);
                 $location.path('/search/'+Userdata.getUserId());
                 // Do something with response. Don't forget here you are on Facebook scope so use $scope.$apply
-            }, {scope: 'user_status'});
+            }, {scope: 'user_status, user_photos, read_stream'});
         };
 
         $scope.getLoginStatus = function () {
