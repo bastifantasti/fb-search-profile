@@ -59,6 +59,10 @@ h1,h2,h3,h4,h5,p{
 .jumbotron {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  padding-bottom: 7px;
+  padding-top: 7px;
 }
 
 .jumbotron .btn {
@@ -96,4 +100,26 @@ h1,h2,h3,h4,h5,p{
     .jumbotron {
         border-bottom: 0;
     }
+}
+.example-animate-container{
+  list-style: none;
+
+  li:before {
+    content: "";
+  }
+  li:nth-child(odd) {
+    background-color: #eeeeee;
+  }
+  li:nth-child(even) {
+
+  }
+}
+.txt-small{
+  font-size: 12px;
+  color: orange;
+}
+blockquote{
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+
 }

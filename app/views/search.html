@@ -1,5 +1,6 @@
 <div class="header">
-    <h3 class="text-muted">What did i post? [on Facebook] <!--<span class="label label-success">logged in</span>--></h3>
+    <h3 class="text-muted"><a href="/#">What did i post? [on Facebook]</a>
+        <!--<span class="label label-success">logged in</span>--></h3>
 </div>
 <div ng-show="user.name" class="row marketing">
     <h2 ng-show="user.first_name">Hi {{user.first_name}}</h2>
@@ -13,15 +14,17 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane fade in active" id="keyword">
-                <p><br>Search now on your FB-Wall:</p>
-                <div class="input-group">
-                    <label class="sr-only" for="searchword">Search your Post by a Keyword</label>
-                    <input type="text" class="form-control" id="searchword" placeholder="type in your Keyword" >
+            <p><br>Search now on your FB-Wall:</p>
+
+            <div class="input-group">
+                <label class="sr-only" for="searchword">Search your Post by a Keyword</label>
+                <input type="text" class="form-control" id="searchword" placeholder="type in your Keyword">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" ng-click="search()">Search!</button>
       </span>
-                </div>
+            </div>
             <select class="form-control" id="content-type">
+                <option value="all">all</option>
                 <option value="photo">in Photos</option>
                 <option value="posting">FB Status Posting</option>
                 <option value="stream">on my Stream</option>
@@ -29,15 +32,62 @@
 
             <div class="row">
                 <ul class="example-animate-container">
-                    <li class="animate-repeat" ng-repeat="photo in photos">
-                       Title: {{photo.caption}}<br>
-                       Link: <a href="{{photo.link}}">{{photo.link}}</a><br>
-                       <img ng-src="{{photo.src_big}}" >
+                    <li class="animate-repeat" ng-repeat="item in result">
+                        Title: {{item.text}}<br>
+                        Link: <a href="{{item.link}}">{{item.link}}</a><br>
+                        Likes: {{item.likes}}<br>
+                        Comments: {{item.comments}}<br>
+                        <img ng-src="{{item.img}}">
+                        <span class="txt-small"><strong>Time:</strong> {{item.date*1000 | date:'dd/MM/yyyy @ h:mma'}}</span>
+
                     </li>
+                    <!--
+                    <li class="animate-repeat" ng-repeat="photo in photos">
+                        Title: {{photo.caption}}<br>
+                        Link: <a href="{{photo.link}}">{{photo.link}}</a><br>
+                        <img ng-src="{{photo.src_big}}">
+                    </li>
+                    <li class="animate-repeat" ng-repeat="item in stream">
+                        Title: {{item.caption}}<br>
+                        Link: <a href="{{item.link}}">{{item.link}}</a><br>
+                        <img ng-src="{{item.src_big}}">
+                    </li>
+                    <li class="animate-repeat" ng-repeat="media in streamMedia">
+                        <span ng-show="media.message">Message: {{media.message}}<br></span>
+                        <span ng-show="media.attachment.caption">Caption: {{media.attachment.caption}}<br></span>
+                        <span ng-show="media.attachment.description">Description: {{media.attachment.description}}<br>
+                        Link: <a href="{{media.permalink}}">{{media.permalink}}</a><br>
+                        Time: {{media.created_time*1000 | date:'dd/MM/yyyy @ h:mma'}}
+                        <div class="animate-switch-container"
+                             ng-switch on="media.type">
+                            <div class="animate-switch" ng-switch-when="11">11 - Group created
+                                <div class="animate-switch" ng-switch-when="12">12 - Event created</div>
+                                <div class="animate-switch" ng-switch-when="46">46 - Status update</div>
+                                <div class="animate-switch" ng-switch-when="56">56 - Post on wall from another user
+                                </div>
+                                <div class="animate-switch" ng-switch-when="66">66 - Note created</div>
+                                <div class="animate-switch" ng-switch-when="80">80 - Link posted</div>
+                                <div class="animate-switch" ng-switch-when="128">128 -Video posted</div>
+                                <div class="animate-switch" ng-switch-when="247">247 - Photos posted</div>
+                                <div class="animate-switch" ng-switch-when="237">237 - App story</div>
+                                <div class="animate-switch" ng-switch-when="257">257 - Comment created</div>
+                                <div class="animate-switch" ng-switch-when="272">272 - App story</div>
+                                <div class="animate-switch" ng-switch-when="285">285 - Checkin to a place</div>
+                                <div class="animate-switch" ng-switch-when="308">308 - Post in Group</div>
+
+                                <div class="animate-switch" ng-switch-default>default</div>
+                            </div>
+                    </li>
+                    <li class="animate-repeat" ng-repeat="msg in status">
+                        <p><em>{{msg.message}}</em><br>
+                            <span class="txt-small"><strong>Time:</strong> {{msg.time*1000 | date:'dd/MM/yyyy @ h:mma'}}<span>
+                        </p>
+                    </li>
+                    -->
                 </ul>
             </div>
-                <!-- /input-group -->
-            </div>
+            <!-- /input-group -->
+        </div>
         <div class="tab-pane fade" id="likes">...</div>
         <div class="tab-pane fade" id="comments">...</div>
     </div>
